@@ -8,36 +8,43 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="swiss-clock" id="clock">
-            <div class="clock-face">
-                <!-- Timer overlay -->
-                <div class="timer-overlay" id="timerOverlay"></div>
-                
-                <!-- Clock markers -->
-                <div class="marker marker-12"></div>
-                <div class="marker marker-3"></div>
-                <div class="marker marker-6"></div>
-                <div class="marker marker-9"></div>
-                
-                <!-- Clock hands -->
-                <div class="hand hour-hand"></div>
-                <div class="hand minute-hand"></div>
-                <div class="hand second-hand">
-                    <div class="second-hand-tip"></div>
-                </div>
-                
-                <!-- Center dot -->
-                <div class="center-dot"></div>
+    <main class="app">
+        <header class="app__header">
+            <h1 class="app__title">Pomodoro</h1>
+            <p class="app__subtitle">25 minutes on, 5 minutes off.</p>
+        </header>
+
+        <section class="intention" aria-live="polite">
+            <form id="intentionForm" class="intention__form">
+                <label for="intentionInput" class="intention__label">What will you focus on?</label>
+                <input
+                    id="intentionInput"
+                    class="intention__input"
+                    type="text"
+                    name="intention"
+                    autocomplete="off"
+                    required
+                />
+            </form>
+
+            <div class="intention__display is-hidden">
+                <span class="intention__label intention__label--static">Focus:</span>
+                <span id="intentionText" class="intention__text"></span>
             </div>
-        </div>
-        
-        <!-- Timer status -->
-        <div class="timer-status" id="timerStatus">
-            <span class="status-text">Click clock to start 1-hour focus session</span>
-        </div>
-    </div>
-    
+        </section>
+
+        <section class="timer" aria-live="polite">
+            <div id="timerDisplay" class="timer__display">25:00</div>
+            <p id="phaseLabel" class="timer__phase">Focus</p>
+        </section>
+
+        <section class="controls">
+            <button id="startPauseBtn" type="button" class="btn btn--primary">Start</button>
+            <button id="resetBtn" type="button" class="btn" disabled>Reset</button>
+            <button id="togglePhaseBtn" type="button" class="btn">Skip to Break</button>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html> 
